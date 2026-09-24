@@ -1,8 +1,8 @@
 FitLog: Workout Library
 
 A dark, no-nonsense workout library built with Next.js. Pick a lift, lock it into today's plan, and watch the week's work add up.
-Live Demo
 
+Live Demo:
 Vercel URL:https://assignment-6-one-phi.vercel.app/
 
 Features:
