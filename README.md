@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+FitLog: Workout Library
 
-## Getting Started
+A dark, no-nonsense workout library built with Next.js. Pick a lift, lock it into today's plan, and watch the week's work add up.
+Live Demo
 
-First, run the development server:
+netlify URL:https://6ab5a438d312babb0338ac2f--stately-concha-948155.netlify.app
+
+Features:
+1. Browse 12+ Workouts** — Full library with images, muscle groups, and stats loaded live from the API
+2. Dynamic Details Pages** — Click any workout to see equipment, difficulty, sets, reps, instructions, and ratings
+3. Today's Plan (max 5 lifts)** — Add workouts to your daily plan with live metrics for exercises, minutes, and calories
+4. Save for Later** — Bookmark workouts you love and access them from your Saved tab
+5. Sort & Persist** — Sort by duration, calories, or rating; all plan/saved data persists across reloads via localStorage
+
+Tech Stack:
+
+Next.js 16 (App Router + Turbopack)
+React 19
+TypeScript
+Tailwind CSS v4
+React Context API (global state)
+react-hot-toast (notifications)
+lucide-react (icons)
+
+API:
+
+All workouts**: https://api.abcz.workers.dev/api/fitlog
+Single workout**: https://api.abcz.workers.dev/api/fitlog/:id
+
+Getting Started:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
