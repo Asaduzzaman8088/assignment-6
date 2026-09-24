@@ -12,15 +12,15 @@ export type Workout = {
   id: number;
   name: string;
   image: string;
-  category: string[];
-  equipment: string[];
+  muscleGroups: string[];
+  equipment: string;
   duration: number;
-  calories: number;
+  caloriesBurned: number;
   rating: number;
-  description: string;
   difficulty: string;
   sets: number;
   reps: string;
+  description: string;
   instructions: string[];
 };
 
