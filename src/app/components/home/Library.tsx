@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Loader2 } from "lucide-react";
 import WorkoutCard from "./WorkoutCard";
 import { Workout } from "@/app/context/WorkoutContext";
@@ -9,7 +9,7 @@ export default function Library() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
+  const [sortBy, setSortBy] = useState<"duration" | "caloriesBurned" | "rating">(
     "duration"
   );
 
@@ -32,13 +32,15 @@ export default function Library() {
     fetchWorkouts();
   }, []);
 
-  // Sort logic
-  const sorted = [...workouts].sort((a, b) => {
-    if (sortBy === "duration") return a.duration - b.duration;
-    if (sortBy === "calories") return a.calories - b.calories;
-    if (sortBy === "rating") return b.rating - a.rating;
-    return 0;
-  });
+  // Optimized sort logic with updated property name
+  const sortedWorkouts = useMemo(() => {
+    return [...workouts].sort((a, b) => {
+      if (sortBy === "duration") return a.duration - b.duration;
+      if (sortBy === "caloriesBurned") return a.caloriesBurned - b.caloriesBurned;
+      if (sortBy === "rating") return b.rating - a.rating;
+      return 0;
+    });
+  }, [workouts, sortBy]);
 
   return (
     <section id="library" className="container mx-auto px-4 py-12">
@@ -64,12 +66,12 @@ export default function Library() {
             id="sort"
             value={sortBy}
             onChange={(e) =>
-              setSortBy(e.target.value as "duration" | "calories" | "rating")
+              setSortBy(e.target.value as "duration" | "caloriesBurned" | "rating")
             }
             className="cursor-pointer rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-200 outline-none transition hover:border-lime-400 focus:border-lime-400"
           >
             <option value="duration">Duration</option>
-            <option value="calories">Calories</option>
+            <option value="caloriesBurned">Calories</option>
             <option value="rating">Rating</option>
           </select>
         </div>
@@ -93,7 +95,7 @@ export default function Library() {
       {/* Grid */}
       {!loading && !error && (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {sorted.map((w) => (
+          {sortedWorkouts.map((w) => (
             <WorkoutCard key={w.id} workout={w} />
           ))}
         </div>

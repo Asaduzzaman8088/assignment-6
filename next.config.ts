@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "**", // allow any HTTPS domain (needed for API images)
+        hostname: "img.magnific.com",
       },
     ],
   },
