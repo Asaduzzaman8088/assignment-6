@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { Plus, Bookmark, Clock, Flame, Star } from "lucide-react";
+import { Bookmark, Calendar, Clock, Flame, Star } from "lucide-react";
 import { useWorkout, Workout } from "@/app/context/WorkoutContext";
 
 export default function DetailsClient({ workout }: { workout: Workout }) {
@@ -73,13 +73,13 @@ export default function DetailsClient({ workout }: { workout: Workout }) {
         </div>
 
         {/* Instructions */}
-        <h3 className="mt-8 font-oswald text-lg font-bold uppercase tracking-wider text-lime-400">
+        <h3 className="mt-8 font-oswald text-lg font-bold uppercase tracking-wider text-white">
           Instructions
         </h3>
         <ol className="mt-3 space-y-2">
           {workout.instructions?.map((step, i) => (
             <li key={i} className="flex gap-3 text-sm text-neutral-300">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-neutral-800 text-xs font-bold">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-600 text-xs font-semibold text-neutral-300">
                 {i + 1}
               </span>
               <span>{step}</span>
@@ -92,14 +92,15 @@ export default function DetailsClient({ workout }: { workout: Workout }) {
           <button
             onClick={handleAddPlan}
             disabled={!!inPlan}
-            className="inline-flex items-center gap-2 rounded-full bg-lime-400 px-6 py-3 text-sm font-bold uppercase text-black transition hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+            style={{ backgroundColor: "#C2F800" }}
           >
-            <Plus className="h-4 w-4" />
-            {inPlan ? "In Plan" : "Add to today's plan"}
+            <Calendar className="h-4 w-4" />
+            {inPlan ? "In your plan" : "Add to today's plan"}
           </button>
           <button
             onClick={handleSave}
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-700 px-6 py-3 text-sm font-bold uppercase text-neutral-200 transition hover:border-lime-400 hover:text-lime-400"
+            className="inline-flex items-center gap-2 rounded-lg border border-neutral-700 px-5 py-2.5 text-sm font-medium text-neutral-100 transition hover:border-neutral-500"
           >
             <Bookmark className="h-4 w-4" />
             {isSaved ? "Saved" : "Save for later"}
