@@ -130,15 +130,15 @@ export default function MyPlanPage() {
                     </p>
                     <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-neutral-400">
                       <span className="flex items-center gap-1.5">
-                        <Clock className="h-3.5 w-3.5 text-neutral-500" strokeWidth={1.8} />
+                        <Clock className="h-3.5 w-3.5 text-brand" strokeWidth={2} />
                         {w.duration} min
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Flame className="h-3.5 w-3.5 text-neutral-500" strokeWidth={1.8} />
+                        <Flame className="h-3.5 w-3.5 text-brand" strokeWidth={2} />
                         {w.caloriesBurned} kcal
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Star className="h-3.5 w-3.5 text-neutral-500" strokeWidth={1.8} />
+                        <Star className="h-3.5 w-3.5 text-brand" strokeWidth={2} />
                         {w.rating}
                       </span>
                     </div>
