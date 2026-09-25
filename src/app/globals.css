@@ -3,12 +3,16 @@
 @theme {
   --color-brand: #C2F800;
   --color-brand-dark: #a8dc00;
+}
+
+:root {
   --font-oswald: "Oswald", sans-serif;
   --font-inter: "Inter", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll; /* Reserve space so page doesn't shift horizontally */
 }
 
 body {
@@ -38,5 +42,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #404040;
 }

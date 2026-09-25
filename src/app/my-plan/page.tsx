@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { Clock, Flame, Star, Trash2, Check, Eye } from "lucide-react";
+import { Clock, Flame, Star, X, Check, Eye } from "lucide-react";
 import { useWorkout } from "@/app/context/WorkoutContext";
 
 export default function MyPlanPage() {
@@ -62,7 +62,7 @@ export default function MyPlanPage() {
       </div>
 
       {/* Content — fixed min-height so page height doesn't jump */}
-      <div className="mt-6 min-h-[300px]">
+      <div className="mt-6 ">
         {list.length === 0 ? (
           <EmptyState tab={tab} />
         ) : (
@@ -88,24 +88,26 @@ export default function MyPlanPage() {
                   {/* Info */}
                   <div className="min-w-0 flex-1">
                     <h3
-                      className={`truncate font-oswald text-base font-bold uppercase tracking-wide sm:text-lg ${
-                        done ? "text-neutral-500 line-through" : ""
-                      }`}
+                      className={`truncate font-oswald text-base font-bold uppercase tracking-wide sm:text-lg ${done ? "text-neutral-500 line-through" : ""
+                        }`}
                     >
                       {w.name}
                     </h3>
                     <p className="truncate text-xs text-neutral-500">
                       {w.equipment}
                     </p>
-                    <div className="mt-1 flex flex-wrap gap-3 text-xs text-neutral-400">
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" /> {w.duration} min
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-neutral-400">
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5 text-neutral-500" strokeWidth={1.8} />
+                        {w.duration} min
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Flame className="h-3 w-3" /> {w.caloriesBurned} kcal
+                      <span className="flex items-center gap-1.5">
+                        <Flame className="h-3.5 w-3.5 text-neutral-500" strokeWidth={1.8} />
+                        {w.caloriesBurned} kcal
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Star className="h-3 w-3" /> {w.rating}
+                      <span className="flex items-center gap-1.5">
+                        <Star className="h-3.5 w-3.5 text-neutral-500" strokeWidth={1.8} />
+                        {w.rating}
                       </span>
                     </div>
                   </div>
@@ -114,22 +116,21 @@ export default function MyPlanPage() {
                   <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
                     <Link
                       href={`/workout/${w.id}`}
-                      className="flex flex-1 items-center justify-center gap-1 rounded-full border border-neutral-700 px-3 py-1.5 text-xs font-bold uppercase text-neutral-300 transition hover:border-brand hover:text-brand sm:flex-none"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-neutral-700 bg-transparent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-300 transition hover:border-neutral-500 hover:text-white sm:flex-none"
                     >
-                      <Eye className="h-3 w-3" /> View Details
+                      View Details
                     </Link>
 
                     {tab === "plan" && (
                       <button
                         onClick={() => {
                           markDone(w.id);
-                          toast.success(
-                            done ? "Marked as undone" : "Marked as done"
-                          );
+                          toast.success(done ? "Marked as undone" : "Marked as done");
                         }}
-                        className="flex flex-1 items-center justify-center gap-1 rounded-full bg-brand px-3 py-1.5 text-xs font-bold uppercase text-black transition hover:brightness-110 sm:flex-none"
+                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-bold uppercase tracking-wide text-black transition hover:brightness-110 sm:flex-none"
                       >
-                        <Check className="h-3 w-3" /> Mark as Done
+                        <Check className="h-4 w-4" strokeWidth={3} />
+                        Mark as Done
                       </button>
                     )}
 
@@ -144,9 +145,9 @@ export default function MyPlanPage() {
                         }
                       }}
                       aria-label="Remove"
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-neutral-500 transition hover:bg-red-500/10 hover:text-red-400"
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-neutral-500 transition hover:text-red-400"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <X className="h-4 w-4" strokeWidth={2} />
                     </button>
                   </div>
                 </div>
@@ -173,11 +174,10 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 whitespace-nowrap rounded-md px-4 py-1.5 text-center text-xs font-semibold transition sm:flex-none ${
-        active
-          ? "bg-neutral-800 text-white"
-          : "text-neutral-400 hover:text-neutral-200"
-      }`}
+      className={`flex-1 whitespace-nowrap rounded-md px-4 py-1.5 text-center text-xs font-semibold transition sm:flex-none ${active
+        ? "bg-neutral-800 text-white"
+        : "text-neutral-400 hover:text-neutral-200"
+        }`}
     >
       {label}
     </button>
@@ -199,9 +199,8 @@ function StatCard({
         {label}
       </p>
       <p
-        className={`mt-1 font-oswald text-2xl font-bold sm:text-4xl ${
-          white ? "text-white" : "text-brand"
-        }`}
+        className={`mt-1 font-oswald text-2xl font-bold sm:text-4xl ${white ? "text-white" : "text-brand"
+          }`}
       >
         {value}
       </p>
