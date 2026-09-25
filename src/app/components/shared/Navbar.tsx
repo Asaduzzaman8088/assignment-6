@@ -45,7 +45,7 @@ export default function Navbar() {
             {/* Plan badge */}
             <Link
               href="/my-plan"
-              className="flex items-center gap-2 rounded-full py-1 pl-4 pr-1 text-xs font-bold text-neutral-100 transition hover:bg-gray-800"
+              className="flex items-center gap-2 rounded-full py-1 pl-4 pr-1 text-xs font-semi-bold text-neutral-100 transition hover:bg-gray-800"
             >
               Plan
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-lime-400 text-xs font-bold text-black">
@@ -56,7 +56,7 @@ export default function Navbar() {
             {/* Saved badge */}
             <Link
               href="/my-plan"
-              className="flex items-center gap-2 rounded-full py-1 pl-4 pr-1 text-xs font-bold text-neutral-100 transition hover:bg-gray-800"
+              className="flex items-center gap-2 rounded-full py-1 pl-4 pr-1 text-xs font-semi-bold text-neutral-100 transition hover:bg-gray-800"
             >
               Saved
               <span className="flex h-6 w-6 items-center justify-center rounded-full border border-neutral-600 text-xs font-bold text-neutral-100">
