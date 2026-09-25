@@ -42,24 +42,27 @@ export default function MyPlanPage() {
       {/* Metrics row */}
       <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4">
         <StatCard label="Exercises" value={totalExercises} />
-        <StatCard label="Minutes" value={totalMinutes} />
-        <StatCard label="Calories" value={totalCalories} />
+        <StatCard label="Minutes" value={totalMinutes} white />
+        <StatCard label="Calories" value={totalCalories} white />
       </div>
 
       {/* Tabs */}
-      <div className="mt-8 flex gap-1 border-b border-neutral-800">
-        <TabButton
-          active={tab === "plan"}
-          onClick={() => setTab("plan")}
-          label="Today's Plan"
-          count={myPlan.length}
-        />
-        <TabButton
-          active={tab === "saved"}
-          onClick={() => setTab("saved")}
-          label="Saved"
-          count={saved.length}
-        />
+      <div className="mt-8 flex items-center justify-between gap-4">
+        {/* Tabs wrapper */}
+        <div className="inline-flex items-center gap-1 rounded-lg border border-neutral-800 bg-neutral-900/60 p-1">
+          <TabButton
+            active={tab === "plan"}
+            onClick={() => setTab("plan")}
+            label="Today's Plan"
+          />
+          <TabButton
+            active={tab === "saved"}
+            onClick={() => setTab("saved")}
+            label="Saved"
+          />
+        </div>
+
+        {/* Sort dropdown (optional — keep if you have it) */}
       </div>
 
       {/* Content */}
@@ -88,9 +91,8 @@ export default function MyPlanPage() {
                 {/* Info */}
                 <div className="min-w-0 flex-1">
                   <h3
-                    className={`font-oswald text-lg font-bold uppercase tracking-wide ${
-                      done ? "text-neutral-500 line-through" : ""
-                    }`}
+                    className={`font-oswald text-lg font-bold uppercase tracking-wide ${done ? "text-neutral-500 line-through" : ""
+                      }`}
                   >
                     {w.name}
                   </h3>
@@ -158,50 +160,49 @@ export default function MyPlanPage() {
 
 /* ---------- Sub-components ---------- */
 
-function StatCard({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-5 text-center">
-      <p className="font-oswald text-3xl font-bold text-lime-400 sm:text-4xl">
-        {value}
-      </p>
-      <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-neutral-500 sm:text-xs">
-        {label}
-      </p>
-    </div>
-  );
-}
-
 function TabButton({
   active,
   onClick,
   label,
-  count,
 }: {
   active: boolean;
   onClick: () => void;
   label: string;
-  count: number;
 }) {
   return (
     <button
       onClick={onClick}
-      className={`relative px-4 py-3 text-sm font-bold uppercase tracking-wide transition ${
-        active
-          ? "border-b-2 border-lime-400 text-lime-400"
-          : "text-neutral-500 hover:text-neutral-300"
-      }`}
+      className={`rounded-md px-4 py-1.5 text-xs font-semibold transition ${active
+          ? "bg-neutral-800 text-white"
+          : "text-neutral-400 hover:text-neutral-200"
+        }`}
     >
       {label}
-      <span
-        className={`ml-2 rounded-full px-1.5 py-0.5 text-[10px] ${
-          active
-            ? "bg-lime-400/20 text-lime-400"
-            : "bg-neutral-800 text-neutral-500"
-        }`}
-      >
-        {count}
-      </span>
     </button>
+  );
+}
+
+function StatCard({
+  label,
+  value,
+  white,
+}: {
+  label: string;
+  value: number;
+  white?: boolean;
+}) {
+  return (
+    <div className="rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-5 text-center">
+      <p className="text-xs font-medium text-neutral-400 sm:text-sm">
+        {label}
+      </p>
+      <p
+        className={`mt-1 font-oswald text-3xl font-bold sm:text-4xl ${white ? "text-white" : "text-brand"
+          }`}
+      >
+        {value}
+      </p>
+    </div>
   );
 }
 
