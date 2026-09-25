@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="./Link - logo.svg"
+              src="/logo.svg"
               alt="FitLog"
               width={140}
               height={40}
