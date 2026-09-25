@@ -78,10 +78,8 @@ export default function DetailsClient({ workout }: { workout: Workout }) {
         </h3>
         <ol className="mt-3 space-y-2">
           {workout.instructions?.map((step, i) => (
-            <li key={i} className="flex gap-3 text-sm text-neutral-300">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-600 text-xs font-semibold text-neutral-300">
-                {i + 1}
-              </span>
+            <li key={i} className="flex gap-2 text-sm text-neutral-300">
+              <span className="font-medium text-neutral-400">{i + 1}.</span>
               <span>{step}</span>
             </li>
           ))}
