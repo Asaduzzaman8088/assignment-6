@@ -17,9 +17,18 @@ export default function MyPlanPage() {
     doneIds,
   } = useWorkout();
 
+  const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">("duration");
+
   const [tab, setTab] = useState<"plan" | "saved">("plan");
 
-  const list = tab === "plan" ? myPlan : saved;
+
+  const rawList = tab === "plan" ? myPlan : saved;
+  const list = [...rawList].sort((a, b) => {
+    if (sortBy === "duration") return a.duration - b.duration;
+    if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned;
+    if (sortBy === "rating") return b.rating - a.rating;
+    return 0;
+  });
 
   const totalExercises = myPlan.length;
   const totalMinutes = myPlan.reduce((sum, w) => sum + (w.duration || 0), 0);
@@ -45,8 +54,9 @@ export default function MyPlanPage() {
         <StatCard label="Calories" value={totalCalories} white />
       </div>
 
-      {/* Tabs — FIXED WIDTH so no shifting */}
-      <div className="mt-8 flex">
+      {/* Tabs + Sort */}
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        {/* Tabs */}
         <div className="flex w-full items-center gap-1 rounded-lg border border-neutral-800 bg-neutral-900/60 p-1 sm:w-fit">
           <TabButton
             active={tab === "plan"}
@@ -58,6 +68,28 @@ export default function MyPlanPage() {
             onClick={() => setTab("saved")}
             label="Saved"
           />
+        </div>
+
+        {/* Sort dropdown */}
+        <div className="flex items-center justify-end gap-2">
+          <label
+            htmlFor="my-plan-sort"
+            className="text-xs font-medium text-neutral-500"
+          >
+            Sort By
+          </label>
+          <select
+            id="my-plan-sort"
+            value={sortBy}
+            onChange={(e) =>
+              setSortBy(e.target.value as "duration" | "calories" | "rating")
+            }
+            className="cursor-pointer rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-neutral-200 outline-none transition hover:border-neutral-700"
+          >
+            <option value="duration">Duration</option>
+            <option value="calories">Calories</option>
+            <option value="rating">Rating</option>
+          </select>
         </div>
       </div>
 
