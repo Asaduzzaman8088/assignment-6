@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { Bookmark, Calendar, Clock, Flame, Star } from "lucide-react";
+import { Bookmark, Clock, Flame, Star } from "lucide-react";
 import { useWorkout, Workout } from "@/app/context/WorkoutContext";
 
 export default function DetailsClient({ workout }: { workout: Workout }) {
@@ -93,7 +93,73 @@ export default function DetailsClient({ workout }: { workout: Workout }) {
             className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
             style={{ backgroundColor: "#C2F800" }}
           >
-            <Calendar className="h-4 w-4" />
+            {/* Custom CalendarPlus — + centered in body */}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 shrink-0"
+            >
+              {/* Calendar outline */}
+              <rect
+                x="2"
+                y="3.5"
+                width="12"
+                height="11"
+                rx="1.5"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              />
+              {/* Divider line under header */}
+              <line
+                x1="2"
+                y1="6.5"
+                x2="14"
+                y2="6.5"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              />
+              {/* Top tabs */}
+              <line
+                x1="5.5"
+                y1="1.5"
+                x2="5.5"
+                y2="4"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
+              <line
+                x1="10.5"
+                y1="1.5"
+                x2="10.5"
+                y2="4"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
+              {/* Centered plus sign */}
+              <line
+                x1="8"
+                y1="9.5"
+                x2="8"
+                y2="13"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <line
+                x1="6.25"
+                y1="11.25"
+                x2="9.75"
+                y2="11.25"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
             {inPlan ? "In your plan" : "Add to today's plan"}
           </button>
           <button
