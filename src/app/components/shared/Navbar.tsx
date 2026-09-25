@@ -10,10 +10,9 @@ export default function Navbar() {
   const { myPlan, saved } = useWorkout();
 
   const linkClass = (href: string) =>
-    `px-3 py-1.5 rounded-md text-sm font-medium transition ${
-      pathname === href
-        ? "bg-lime-400/10 text-lime-400"
-        : "text-neutral-400 hover:text-white"
+    `px-3 py-1.5 rounded-md text-sm font-medium transition ${pathname === href
+      ? "bg-lime-400/10 text-lime-400"
+      : "text-neutral-400 hover:text-white"
     }`;
 
   return (
@@ -39,21 +38,24 @@ export default function Navbar() {
 
         {/* Badges (right) */}
         <div className="flex items-center gap-2">
+          {/* Plan badge */}
           <Link
             href="/my-plan"
-            className="flex items-center gap-1.5 rounded-full bg-lime-400 px-3 py-1 text-xs font-bold text-black transition hover:bg-lime-300"
+            className="flex items-center gap-2 rounded-full py-1 pl-4 pr-1 text-xs font-bold text-neutral-100 transition hover:bg-gray-800"
           >
             Plan
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-black/20 px-1.5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-lime-400 text-xs font-bold text-black">
               {myPlan.length}
             </span>
           </Link>
+
+          {/* Saved badge */}
           <Link
             href="/my-plan"
-            className="flex items-center gap-1.5 rounded-full border border-neutral-700 px-3 py-1 text-xs font-bold text-neutral-200 transition hover:border-neutral-500"
+            className="flex items-center gap-2 rounded-full py-1 pl-4 pr-1 text-xs font-bold text-neutral-100 transition hover:bg-gray-800"
           >
             Saved
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-neutral-800 px-1.5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-neutral-600 text-xs font-bold text-neutral-100">
               {saved.length}
             </span>
           </Link>
