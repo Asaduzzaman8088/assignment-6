@@ -54,7 +54,7 @@ export default function DetailsClient({ workout }: { workout: Workout }) {
           {workout.muscleGroups?.map((c) => (
             <span
               key={c}
-              className="rounded-full bg-lime-400/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-lime-400"
+              className="rounded-full bg-brand px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-black"
             >
               {c}
             </span>
@@ -121,9 +121,8 @@ function SpecRow({
 }) {
   return (
     <div
-      className={`flex items-center justify-between px-4 py-3 text-sm ${
-        !last ? "border-b border-neutral-800" : ""
-      }`}
+      className={`flex items-center justify-between px-4 py-3 text-sm ${!last ? "border-b border-neutral-800" : ""
+        }`}
     >
       <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500">
         {label}
