@@ -148,7 +148,7 @@ export default function MyPlanPage() {
                   <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
                     <Link
                       href={`/workout/${w.id}`}
-                      className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full border border-neutral-700 bg-transparent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-neutral-300 transition hover:border-neutral-500 hover:text-white sm:flex-none"
+                      className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full border border-neutral-700 bg-transparent px-4 py-2 text-xs font-semibold tracking-wide text-neutral-300 transition hover:border-neutral-500 hover:text-white sm:flex-none"
                     >
                       View Details
                     </Link>
@@ -159,7 +159,7 @@ export default function MyPlanPage() {
                           markDone(w.id);
                           toast.success(done ? "Marked as undone" : "Marked as done");
                         }}
-                        className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-bold uppercase tracking-wide text-black transition hover:brightness-110 sm:flex-none"
+                        className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-semibold tracking-wide text-black transition hover:brightness-110 sm:flex-none"
                       >
                         <Check className="h-4 w-4" strokeWidth={3} />
                         Mark as Done
