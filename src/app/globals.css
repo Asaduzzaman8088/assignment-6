@@ -44,3 +44,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #404040;
 }
+
+/* Ensure buttons and clickable elements always show pointer cursor */
+button:not(:disabled),
+[role="button"]:not(:disabled),
+a,
+select {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
